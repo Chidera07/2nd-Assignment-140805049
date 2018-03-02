@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Carbon Footprint Calculator</title>
+	<meta name="Name" content="ACHUGBU, Chidera">
+	<meta name="Matric no" content="140805049">
+	<meta name="Dept" content="Computer Sciences">
+	<meta name="Date" content="24-02-2018">
+	<meta name="viewport" content="width=device-width, initialscale=1.0" charset="utf-8">
+	<script type="text/javascript" src="CarbonFootPrint.js"></script>
+</head>
+<body>
+	<div style="width: 100%; height: 100%;">
+		<div style="background-color: #fff; width: 100%;">
+			<h1 style="color: #300; font-family: Verdana; "><img src="sheep.jpg" height="35vw" width="35vw">FOOTPRINT CALCULATOR</h1>
+		</div>
+
+		<div style="background-color: #fff; height: 50vw; width: 15%; float: left;">
+			<img src="bird2.gif" style="height: 15vw; width: 15vw; position: absolute; top: 20vw;">
+		</div>
+
+		<div style="background-color: #903; height: 5vw; width: 70%; float: left; font-family: Verdana; font-size: 1vw;" id="head1">
+			<center>
+				<p style="background-color: #903; color: #fff;">FOOD</p>
+				<p style="background-color: #903; color: #fff; display: block;" id="ques1">QUESTION 1 OF 3</p>
+				<p style="background-color: #903; color: #fff; display: none;" id="ques2">QUESTION 2 OF 3</p>
+				<p style="background-color: #903; color: #fff; display: none;" id="ques3">QUESTION 3 OF 3</p>
+			</center>
+		</div>
+
+		<div style="height: 20vw; width: 70%; float: left;" id="div1">
+			<center>
+				<p style="color: #903;">Q1.  How would you best describe your diet?</p>
+				<select onblur="validate();" id="food0">
+					<option selected="selected"></option>
+					<option>Meat in most / some meals</option>
+					<option>Meat very rarely / just fish</option>
+					<option>Vegetarian / Vegan</option>
+				</select>
+
+				<p style="color: #903; display: none; width: 29vw;" id="p1">Q2.  In a week, how much do you spend on food containing meat from restaurants, canteens and takeaways?</p>
+				<select onblur="validate2();" id="food1" style="display: none;">
+					<option selected="selected"></option>
+					<option># 0 - #1500</option>
+					<option>Greater than #1500</option>
+				</select>
+
+				<p style="color: #903; display: none; width: 29vw;" id="p2">Q2.  In a week, how much do you spend on food containing fish from restaurants, canteens and takeaways?</p>
+				<select onblur="validate3();" id="food2" style="display: none;">
+					<option selected="selected"></option>
+					<option># 0 - #1500</option>
+					<option>Greater than #1500</option>
+				</select>
+
+				<p style="color: #903; display: none; width: 29vw;" id="p3">Q2.  In a week, how much do you spend on only fruits and veggies?</p>
+				<select onblur="validate4();" id="food3" style="display: none;">
+					<option selected="selected"></option>
+					<option># 0 - #1500</option>
+					<option>Greater than #1500</option>
+				</select>
+
+				<p style="color: #903; display: none; width: 29vw;" id="p4">Q3.  How often do you buy locally produced food?</p>
+				<select onblur="validate5();" id="food4" style="display: none;">
+					<option selected="selected"></option>
+					<option>A lot of the food I buy is locally sourced</option>
+					<option>Some of the food I buy is locally sourced</option>
+					<option>Local sourcing isn't a top priority for me</option>
+				</select>
+
+				<p style="color: #903; display: none; width: 29vw;" id="p5">Q3.  Of the food you buy how much is wasted and thrown away?</p>
+				<select onblur="validate6();" id="food5" style="display: none;">
+					<option selected="selected"></option>
+					<option>None</option>
+					<option>0% - 10%</option>
+					<option>10% - 30%</option>
+					<option>More than 30%</option>
+				</select>
+
+				<br><br>
+				<center><button style="background-color: #903; height: 3vw; width: 10vw; border-radius: 1vw; display: none; font-family: Verdana; color: #fff; border: none;" id="button1" onclick="change();">Next >></button></center>
+			</center>
+		</div>
+
+		<div style="background-color: #399; height: 5vw; width: 70%; float: left; font-family: Verdana; font-size: 1vw; display: none;" id="head2">
+			<center>
+				<p style="background-color: #399; color: #fff;">HOME</p>
+				<p style="background-color: #399; color: #fff; display: block;" id="ques1.1">QUESTION 1 OF 3</p>
+				<p style="background-color: #399; color: #fff; display: none;" id="ques2.1">QUESTION 2 OF 3</p>
+				<p style="background-color: #399; color: #fff; display: none;" id="ques3.1">QUESTION 3 OF 3</p>
+			</center>
+		</div>
+
+		<div style="height: 20vw; width: 70%; float: left; display: none;" id="div2">
+			<center>
+				<p style="color: #399;">Q1.  What kind of house do you live in?</p>
+				<select onblur="home_validate();" id="home0">
+					<option selected="selected"></option>
+					<option>Detached</option>
+					<option>Terrace</option>
+					<option>Flat</option>
+				</select>
+
+				<p style="color: #399; display: none; width: 29vw;" id="p1.1">Q2.  How many bedrooms does your house (detached) have?</p>
+				<select onblur="home_validate2();" id="home1" style="display: none;">
+					<option selected="selected"></option>
+					<option>Less than 4</option>
+					<option>4 or more</option>
+				</select>
+
+				<p style="color: #399; display: none; width: 29vw;" id="p2.1">Q2.  How many bedrooms does your house (terrace) have?</p>
+				<select onblur="home_validate3();" id="home2" style="display: none;">
+					<option selected="selected"></option>
+					<option>Less than 4</option>
+					<option>4 or more</option>
+				</select>
+
+				<p style="color: #399; display: none; width: 29vw;" id="p3.1">Q2.  How many bedrooms does your house (flat) have?</p>
+				<select onblur="home_validate4();" id="home3" style="display: none;">
+					<option selected="selected"></option>
+					<option>Less than 4</option>
+					<option>4 or more</option>
+				</select>
+
+				<p style="color: #399; display: none; width: 29vw;" id="p4.1">Q3.  How many people (aged 17 and over) live in your house?</p>
+				<select onblur="home_validate5();" id="home4" style="display: none;">
+					<option selected="selected"></option>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5 or more</option>
+				</select>
+
+				<p style="color: #399; display: none; width: 29vw;" id="p5.1">Q3.  Do you regularly turn off your lights and appliances (instead of leaving them on standby?</p>
+				<select onblur="home_validate6();" id="home5" style="display: none;">
+					<option selected="selected"></option>
+					<option>Yes</option>
+					<option>No</option>
+				</select>
+
+				<br><br>
+				<center><button style="background-color: #399; height: 3vw; width: 10vw; border-radius: 1vw; display: none; font-family: Verdana; color: #fff; border: none;" id="button1.1" onclick="second_change();">Next >></button></center>
+			</center>
+		</div>
+
+		<div style="background-color: #F90; height: 5vw; width: 70%; float: left; font-family: Verdana; font-size: 1vw; display: none;" id="head3">
+			<center>
+				<p style="background-color: #F90; color: #fff;">TRAVEL</p>
+				<p style="background-color: #F90; color: #fff; display: block;" id="ques1.2">QUESTION 1 OF 3</p>
+				<p style="background-color: #F90; color: #fff; display: none;" id="ques2.2">QUESTION 2 OF 3</p>
+				<p style="background-color: #F90; color: #fff; display: none;" id="ques3.2">QUESTION 3 OF 3</p>
+			</center>
+		</div>
+
+		<div style="height: 20vw; width: 70%; float: left; display: none;" id="div3">
+			<center>
+				<p style="color: #F90;">Q1.  What kind of vehicle do you travel in most often as a driver or passenger (if any)?</p>
+				<select onblur="travel_validate();" id="travel0">
+					<option selected="selected"></option>
+					<option>Car</option>
+					<option>Motorbike</option>
+					<option>Neither - I walk, cycle or use public transport for all my journeys</option>
+				</select>
+
+				<p style="color: #F90; display: none; width: 29vw;" id="p1.2">Q2.  Which of these describes the vehicle you use most?</p>
+				<select onblur="travel_validate2();" id="travel1" style="display: none;">
+					<option selected="selected"></option>
+					<option>Electric car</option>
+					<option>Petrol or diesel car</option>
+				</select>
+
+				<p style="color: #F90; display: none; width: 29vw;" id="p2.2">Q2.  How many hours do you spend in your motorbike for personal use including commuting?</p>
+				<select onblur="travel_validate3();" id="travel2" style="display: none;">
+					<option selected="selected"></option>
+					<option>Under 5 hours</option>
+					<option>Over 5 hours</option>
+				</select>
+
+				<p style="color: #F90; display: none; width: 29vw;" id="p3.2">Q2.  How many hours a week do you spend on the bus / train for personal use including commuting?</p>
+				<select onblur="travel_validate4();" id="travel3" style="display: none;">
+					<option selected="selected"></option>
+					<option>Under 5 hours</option>
+					<option>Over 5 hours</option>
+				</select>
+
+				<p style="color: #F90; display: none; width: 29vw;" id="p4.2">Q3. Do you prefer to use the air conditioner while in a vehicle?</p>
+				<select onblur="travel_validate5();" id="travel4" style="display: none;">
+					<option selected="selected"></option>
+					<option>I do</option>
+					<option>I don't</option>
+				</select>
+
+				<p style="color: #F90; display: none; width: 29vw;" id="p5.2">Q3.  In the last year, how many non-business return flights have you been on?</p>
+				<select onblur="travel_validate6();" id="travel5" style="display: none;">
+					<option selected="selected"></option>
+					<option>Under 3</option>
+					<option>Over 3</option>
+				</select>
+
+				<br><br>
+				<center><button style="background-color: #F90; height: 3vw; width: 10vw; border-radius: 1vw; display: none; font-family: Verdana; color: #fff; border: none;" id="button1.2" onclick="third_change();">Next >></button></center>
+			</center>
+		</div>
+
+		<div style="background-color: #390; height: 5vw; width: 70%; float: left; font-family: Verdana; font-size: 1vw; display: none;" id="head4">
+			<center>
+				<p style="background-color: #390; color: #fff;">STUFF</p>
+				<p style="background-color: #390; color: #fff; display: block;" id="ques1.3">QUESTION 1 OF 3</p>
+				<p style="background-color: #390; color: #fff; display: none;" id="ques2.3">QUESTION 2 OF 3</p>
+				<p style="background-color: #390; color: #fff; display: none;" id="ques3.3">QUESTION 3 OF 3</p>
+			</center>
+		</div>
+
+		<div style="height: 20vw; width: 70%; float: left; display: none;" id="div4">
+			<center>
+				<p style="color: #390;">Q1.  In the last twelve months, have you bought any of these new household items?</p>
+				<select onblur="stuff_validate();" id="stuff0">
+					<option selected="selected"></option>
+					<option>TV, laptop or PC</option>
+					<option>Large item of furniture</option>
+					<option>Mobile phone or tablet</option>
+				</select>
+
+				<p style="color: #390; display: none; width: 29vw;" id="p1.3">Q2.  In a typical month, how much do you spend on clothes and footwear?</p>
+				<select onblur="stuff_validate2();" id="stuff1" style="display: none;">
+					<option selected="selected"></option>
+					<option>#5000 - #10000</option>
+					<option>More than #10000</option>
+				</select>
+
+				<p style="color: #390; display: none; width: 29vw;" id="p2.3">Q2.  In a typical month, how much do you spend on your pets and pet food?</p>
+				<select onblur="stuff_validate3();" id="stuff2" style="display: none;">
+					<option selected="selected"></option>
+					<option>I don't have a pet</option>
+					<option>More than #1000</option>
+				</select>
+
+				<p style="color: #390; display: none; width: 29vw;" id="p3.3">Q2.   In a typical month, how much do you spend on health, beauty and grooming products?</p>
+				<select onblur="stuff_validate4();" id="stuff3" style="display: none;">
+					<option selected="selected"></option>
+					<option>#500 - #5000</option>
+					<option>More than #5000</option>
+				</select>
+
+				<p style="color: #390; display: none; width: 29vw;" id="p4.3">Q3.  In a typical month, how much do you spend on phone, intenet and TV contracts?</p>
+				<select onblur="stuff_validate5();" id="stuff4" style="display: none;">
+					<option selected="selected"></option>
+					<option>#1000 - #10000</option>
+					<option>More than #10000</option>
+				</select>
+
+				<p style="color: #390; display: none; width: 29vw;" id="p5.3">Q3.  Do you recycle regularly?</p>
+				<select onblur="stuff_validate6();" id="stuff5" style="display: none;">
+					<option selected="selected"></option>
+					<option>Yes, I do</option>
+					<option>No, I don't</option>
+				</select>
+
+				<br><br>
+				<center><button style="background-color: #390; height: 3vw; width: 10vw; border-radius: 1vw; display: none; font-family: Verdana; color: #fff; border: none;" id="button1.3" onclick="get_result();">Next >></button></center><br><br>
+				<p id="result" style="display: none;"></p><br><br>
+				<a href="#" id="info" onclick="generate_info();" style="display: none; color:#903;">Click to find out how you can reduce your footprint</a><br>
+			</center>
+		</div>
+
+		<div style="background-color: #fff; height: 50vw; width: 15%; float: right;">
+			<img src="bird2.gif" style="position: absolute; top: 30vw; height: 15vw; width: 15vw;">
+		</div>
+
+		<div style="background-color: #300; color: #fff; clear: both;">
+			<center>Copyright 2018 ACHUGBU, Stephanie Chidera</center>
+		</div>
+</div>
+</body>
+</html>

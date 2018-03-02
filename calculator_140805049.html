@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator Project(Using tables)</title>
+	<style type="text/css">
+	table.mine{
+		background-color: #3CF;
+		border-left: none;
+		border-right: none;
+		border-top: none;
+		border-bottom: solid;
+		border-bottom-color: #36F;
+		border-spacing: 5px; 
+		width: 250px;
+		height: 200px;
+		border-radius: 5px;
+		font-family: Trebuchet;
+	}
+    input#ButtonEval{
+		background-color: #CF9;
+		width: 75px;
+		height: 35px;
+		border-left: none;
+		border-right: none;
+		border-top: none;
+		border-bottom: solid;
+		border-bottom-color: #993;
+		border-radius: 5px;
+		font-family: cursive;
+	}	
+	input#ButtonC{
+		background-color: #F99;
+		width: 75px;
+		height: 35px;
+		border-left: none;
+		border-right: none;
+		border-top: none;
+		border-bottom: solid;
+		border-bottom-color: #F69;
+		color:white;
+		border-radius: 5px;
+		font-family: cursive;
+	}
+	input#ButtonAC{
+		background-color: #F99;
+		width: 75px;
+		height: 35px;
+		border-left: none;
+		border-right: none;
+		border-top: none;
+		border-bottom: solid;
+		border-bottom-color: #F69;
+		color:white;
+		border-radius: 5px;
+		font-family: cursive;
+	}
+	input#inOut{
+		text-align: right;
+		background-color: #699;
+		width: 380px;
+		height: 35px;
+		font-size: 30px;
+		border-left: none;
+		border-right: none;
+		border-top: solid;
+		border-top-color: #666666;
+		border-bottom: none;
+		color: white;
+		border-radius: 5px;
+		font-family: cursive;
+	}
+	input.mine{
+		background-color: white;
+		width: 75px;
+		height: 35px;
+		border-left: none;
+		border-right: none;
+		border-top: none;
+		border-bottom: solid;
+		border-bottom-color: #666666;
+		border-radius: 5px;
+		font-family: cursive;
+	}
+
+	</style>
+</head>
+<body>
+<table class="mine" align="center">
+	<tr>
+		<td align="center" colspan="10"><input disabled="disable" type="text" id="inOut" value="" maxlength="100" /></td>
+	</tr>
+    <tr>
+        <td align="center"><input id="ButtonAC" type="button" value="AC" onclick="document.getElementById('inOut').value = '';"></input></td>
+        <td align="center"><input id="ButtonC" type="button" value="C" onclick="removeLastChar();"></input></td>
+        <td align="center"><input class="mine" id="ButtonSin" type="button" value="log" onclick="log();"></input></td>
+		<td align="center"><input id="ButtonAC" type="button" value="(" onclick="document.getElementById('inOut').value += '(';"></input></td>
+	</tr>
+	<tr>
+		<td align="center"><input class="mine" id="ButtonSin" type="button" value="sin" onclick="sin();"></input></td>
+		<td align="center"><input class="mine" id="ButtonCos" type="button" value="cos" onclick="cos();"></input></td>
+		<td align="center"><input class="mine" id="ButtonTan" type="button" value="tan" onclick="tan();"></input></td>
+		 <td align="center"><input id="ButtonC" type="button" value=")" onclick="document.getElementById('inOut').value += ')';"></input></td>
+		
+	</tr>
+	<tr>
+		<td align="center"><input class="mine" id="ButtonSinh" type="button" value="sin^-1" onclick="asin();"></input></td>
+		<td align="center"><input class="mine" id="ButtonCosh" type="button" value="cos^-1" onclick="acos();"></input></td>
+		<td align="center"><input class="mine" id="ButtonTanh" type="button" value="tan^-1" onclick="atan();"></input></td>
+		<td align="center"><input class="mine" id="ButtonPi" type="button" value="&#960" onclick="addVal(3.14159265359);"></input></td>
+	</tr>
+	<tr>
+		<td align="center"><input class="mine" id="Button7" type="button" value="7" onclick="addVal(7);"></input></td>
+		<td align="center"><input class="mine" id="Button8" type="button" value="8" onclick="addVal(8);"></input></td>
+		<td align="center"><input class="mine" id="Button9" type="button" value="9" onclick="addVal(9);"></input></td>
+		<td align="center"><input class="mine" id="Button+" type="button" value="+" onclick="addVal('+');"></input></td>
+	</tr>
+	<tr>
+		<td align="center"><input class="mine" id="Button4" type="button" value="4" onclick="addVal(4);"></input></td>
+		<td align="center"><input class="mine" id="Button5" type="button" value="5" onclick="addVal(5);"></input></td>
+		<td align="center"><input class="mine" id="Button6" type="button" value="6" onclick="addVal(6);"></input></td>
+		<td align="center"><input class="mine" id="Button-" type="button" value="-" onclick="addVal('-');"></input></td>
+	</tr>
+	<tr>
+	    <td align="center"><input class="mine" id="Button1" type="button" value="1" onclick="addVal(1);"></input></td>
+		<td align="center"><input class="mine" id="Button2" type="button" value="2" onclick="addVal(2);"></input></td>
+		<td align="center"><input class="mine" id="Button3" type="button" value="3" onclick="addVal(3);"></input></td>
+		<td align="center"><input class="mine" id="Button*" type="button" value="x" onclick="addVal('*');"></input></td>
+	</tr>
+	<tr>
+	    <td align="center"><input class="mine" id="Button0" type="button" value="0" onclick="addVal(0);"></input></td>
+	    <td align="center"><input class="mine" id="Button." type="button" value="." onclick="addVal('.');"></input></td>
+		<td align="center"><input class="mine" id="ButtonEval" type="button" value="=" onclick="inf2Pos(document.getElementById('inOut').value);"></input></td>
+		<td align="center"><input class="mine" id="Button/" type="button" value="/" onclick="addVal('/');"></input></td>
+	</tr>
+</table>
+<script type="text/javascript">
+	function addVal(p1){
+		var currentVal = document.getElementById("inOut").value;
+		var lastChar = currentVal.charAt(currentVal.length-1);
+		var operators = "*-+/.";
+		if(operators.indexOf(p1) != -1 && lastChar == p1)
+			document.getElementById("inOut").value += "";
+		else
+			document.getElementById("inOut").value += p1;
+	}
+
+	function removeLastChar(){
+		var currentVal = document.getElementById("inOut").value;
+		var newCurrentVal = "";
+		for (var i = 0; i <= currentVal.length-2; i++){
+			newCurrentVal += currentVal.charAt(i);
+		}
+		document.getElementById("inOut").value = newCurrentVal;
+	}
+
+	function sin(){
+		document.getElementById("inOut").value = "sin("
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.sin(currentVal * (3.14159265359 / 180));
+	}
+
+	function cos(){
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.cos(currentVal * (3.14159265359 / 180));
+	}
+
+	function tan(){
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.tan(currentVal * (3.14159265359 / 180));
+	}
+
+	function asin(){
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.atan(currentVal * (3.14159265359 / 180));
+	}
+
+	function acos(){
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.atan(currentVal * (3.14159265359 / 180));
+	}
+
+	function atan(){
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.atan(currentVal * (3.14159265359 / 180));
+	}
+
+	function log(){
+		var currentVal = document.getElementById("inOut").value;
+		document.getElementById("inOut").value = Math.log(currentVal);
+	}
+
+	Array.prototype.peek = function(){
+		return this[this.length-1];
+	}
+	
+	function inf2Pos(input){
+		input = document.getElementById("inOut").value;
+
+		if((input.length === 0) || (input === null)){
+			return false;
+		}
+		var infix = new infixClass(input.replace(/ /g, ''));
+		infix.convert2Tokens();
+		var errorStatus = infix.check4Error();
+		if(errorStatus === true){
+			return false;
+		}
+		else{
+			infix.toPostfix();
+			return document.getElementById("inOut").value =  infix.getAns();
+		}
+	}
+
+	var infixClass = function(input){
+		var output = [];
+		var stack = [];
+		var infixAsToken = [];
+
+		var operators = ["^", "*", "/", "+", "-"];
+		var braces = ["(", ")"];
+		var temp = "";
+		var error = false;
+		var precedence = {"^":3, "*":2, "/":2, "+":1, "-":1, "(":0, ")":0};
+
+		this.convert2Tokens = function(){
+		if(input.charAt(0) == "+" || (input.charAt(0) == "-" )){
+			input = "0" + input;
+		}
+		for(var i = 0; i < input.length; i++){
+			if(this.isAnOperator(input.charAt(i)) || this.isBraces(input.charAt(i))){
+				if(temp.length !== 0){
+					infixAsToken.push(temp);
+					temp = "";
+				} 
+				infixAsToken.push(input.charAt(i));
+				continue;
+			}
+
+			if(input.charAt(i) == "."){
+				temp = temp + ".";
+				continue;
+			}
+
+			if(!isNaN(input.charAt(i))){
+				temp = temp + input.charAt(i);
+				continue;
+			}
+		}
+
+		if(temp.length !== 0){
+			infixAsToken.push(temp);
+			temp = "";
+		}
+		};
+
+		this.check4Error = function(){
+		var prev = "op";
+		var BracesList = [];
+		var BracesOutput = [];
+
+		for(var i = 0; i < infixAsToken.length; i++){
+			if(!isNaN(infixAsToken[i])){
+				prev = "no";
+				console.log("Number found");
+				continue;
+			}
+			else if(this.isAnOperator(infixAsToken[i])){
+				console.log("Operator found");
+				if(prev == "op"){
+					error = true;
+					return true;
+				}
+				else{
+					prev = "op";
+				}
+			}
+			else if(this.isBraces(infixAsToken[i])){
+				if(((infixAsToken[i] == "(") && (prev == "no")) || ((infixAsToken[i] == ")") && (prev == "op"))){
+					error = true;
+					return true;
+				}
+
+				BracesList.push(infixAsToken[i]);
+			}
+			else{
+				console.log("Other error");
+				error = true;
+				return true;
+			}
+		}
+
+		if(this.isAnOperator(infixAsToken[infixAsToken.length-1])){
+			error = true;
+			return true;
+		}
+
+		console.log("No error yet");
+
+		if(BracesList.length !== 0){
+			if(BracesList[0] == ")"){
+				console.log("First char error");
+				error = true;
+				return true;
+			}
+
+			for(i = 0; i < BracesList.length; i++){
+				if(BracesList[i] == "("){
+					BracesOutput.push("(");
+				}
+				else{
+					if(BracesOutput.length === 0){
+						console.log("Length is zero");
+						error = true;
+						return true;
+					}
+					else{
+						BracesOutput.pop();
+					}
+				}
+			}
+
+			if(BracesOutput.length !== 0){
+				error = true;
+				return true;
+			}
+		}
+
+		return false;
+		};
+
+		this.toPostfix = function(){
+		for(var i = 0; i < infixAsToken.length; i++){
+			if(this.isANumber(infixAsToken[i])){
+				output.push(infixAsToken[i]);
+			}
+			else if(this.isAnOperator(infixAsToken[i])){
+				if(stack.length === 0){
+					stack.push(infixAsToken[i]);
+				}
+				else{
+					while(precedence[stack.peek()] >= precedence[infixAsToken[i]]){
+						if((infixAsToken[i] === "^") && (precedence[stack.peek()] === precedence[infixAsToken[i]])){
+							break;
+						}
+						output.push(stack.pop());
+						if(stack.length === 0){
+							break;
+						}
+					}
+					stack.push(infixAsToken[i]);
+				}
+				console.log(stack + output);
+			}
+			else if(this.isBraces(infixAsToken[i])){
+				if(infixAsToken[i] === "("){
+					stack.push("(");
+				}
+				else{
+					while(stack.peek() != "("){
+						output.push(stack.pop());
+					}
+					stack.pop();
+				}
+			}
+		}
+		if(stack.length !== 0){
+			while(stack.length !== 0){
+				output.push(stack.pop());
+			}
+		}
+		return output;
+		};
+
+		this.getAns = function(){
+		var no = 0;
+		var tempAns = 0;
+
+		for(var i = 0; i < output.length; i++){
+			if(this.isAnOperator(output[i])){
+				++no;
+			}
+		}
+
+		for(i = 0; i < no; i++){
+			for(var j = 0; j < output.length; j++){
+				if(this.isAnOperator(output[j])){
+					tempAns = this.calculate(output[j-2], output[j-1], output[j]);
+					output[j-2] = tempAns;
+					output.splice((j-1), 2);
+					break;
+				}
+			}
+		}
+		return output[0];
+		};
+
+		this.calculate = function(a, b, op){
+		a = parseFloat(a);
+		b = parseFloat(b);
+		var ans  = 0;
+		switch(op){
+			case "^" : ans = Math.pow(a, b);
+					   break;
+			case "*" : ans = a * b;
+					   break;
+			case "/" : ans = a / b;
+					   break;
+			case "+" : ans = a + b;
+					   break;
+			case "-" : ans = a - b;
+					   break;
+		}
+		return ans;
+		};
+
+		this.isANumber = function(char){
+			return !isNaN(char);
+		};
+
+		this.isAnOperator = function(char){
+		if(operators.indexOf(char) != -1){
+			return true;
+		}
+		return false;
+		};
+
+		this.isBraces = function(char){
+		if(braces.indexOf(char) != -1){
+			return true;
+		}
+		return false;
+		};
+	};                                              
+</script>
+</body>
+</html>
